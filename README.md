@@ -3,6 +3,7 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 
 ### Pre-requisites  
 
+/ Install Git
 / The scripts have only been tested on an Ubuntu v24.04 standard installation  
 / The locale of your server needs to be set to locale=en-US - if not change it, or modify the psql commands accordingly
 
@@ -11,6 +12,7 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 / Login as root  
 / Clone the repo in the root home folder  
 ```
+# apt install git -y
 # git clone https://github.com/agougo/icinga2-install-static-ubuntu.git
 # mv icinga2-install-static-ubuntu icinga2prodinstallation
 ```
@@ -26,4 +28,8 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 ### After the configure-ubuntu.sh script  
 
 / Open your Icingaweb2 interface at https://IP_ADDRESS/icingaweb2  
-/ Initialize by following the instructions here -> [Click](install/configure-ubuntu.adoc)
+/ Initialize by following the instructions here -> [Click](install/configure-ubuntu.adoc)  
+
+### After the configure-ubuntu-director.sh script  
+
+/ Navigate to the director menu and configure it like this -> [Click](install/configure-ubuntu-director.adoc)
