@@ -87,7 +87,6 @@ if ! dpkg -l | grep -qw ufw; then
 
 else
     echo "Firewall is installed. Exiting."
-    exit 1
 fi
 
 # Set firewall rules
