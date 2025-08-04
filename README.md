@@ -61,7 +61,8 @@ In the Grafana folder you will find a dashboard to import. If you wish you can a
 ### [TO DO]
 
 / Move from InfluxDB v1 to InfluxDB v2  
-/ Structure Grafana a bit better
+/ Structure Grafana a bit better  
+/ Test the Grafana module by Netways
 
 ### Support
 
