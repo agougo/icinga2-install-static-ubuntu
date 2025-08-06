@@ -124,4 +124,5 @@ curl -k --user admin:admin 'https://localhost:3000/api/datasources' -X POST -H '
 cd ~
 cd icinga2prodinstallation
 
+# Finish Message
 read -r -s -p $'\nIMPORTANT: NEXT STEPS: \n1) Verify the InfluxDB datasource in grafana \n2) Configure the Graphs Module if required. \n\nPress now enter to exit...\n\n'
