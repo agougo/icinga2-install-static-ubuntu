@@ -3,7 +3,7 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 
 ### Pre-requisites  
 
-/ Install Git
+/ Install Git  
 / The scripts have only been tested on an Ubuntu v24.04 standard installation  
 / The locale of your server needs to be set to locale=en-US - if not change it, or modify the psql commands accordingly
 
