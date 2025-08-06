@@ -18,6 +18,13 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 # git clone https://github.com/agougo/icinga2-install-static-ubuntu.git
 # mv icinga2-install-static-ubuntu icinga2prodinstallation
 ```
+
+/ Probably a good idea to make scripts executable  
+```
+# cd icinga2prodinstallation
+# chmod +x *.sh
+```
+
 / run the following scripts in that order
 ```
 # configure-ubuntu.sh
