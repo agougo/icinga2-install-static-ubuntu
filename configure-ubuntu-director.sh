@@ -71,6 +71,7 @@ systemctl enable icinga-director.service
 
 icingacli director migration run --verbose
 
+# Finish Message
 read -r -s -p $'\nMake sure the director is properly configured in Icingaweb2...\n\n'
 
 else

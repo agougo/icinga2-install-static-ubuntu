@@ -163,6 +163,7 @@ systemctl reload apache2
 IP=$(hostname -I)
 echo $IP $HOSTNAME >> /etc/hosts
 
+# Finish Message
 read -r -s -p $'\nIMPORTANT: NEXT STEPS -> Configure your Icinga2 Installation through IcingaWeb2 \n\nNow press Enter to run your Icinga2 Node Wizard'
 
 # Configure as master
