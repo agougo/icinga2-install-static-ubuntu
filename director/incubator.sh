@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MODULE_NAME=incubator
-MODULE_VERSION=v0.22.0
+MODULE_VERSION=v0.23.0
 REPO="https://github.com/Icinga/icingaweb2-module-${MODULE_NAME}"
 MODULES_PATH="/usr/share/icingaweb2/modules"
 

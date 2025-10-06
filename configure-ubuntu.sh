@@ -43,15 +43,15 @@ sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org
 apt update
 
 # Install PostgreSQL version 16
-apt install postgresql-contrib postgresql-16 postgresql-client-16 -y
+apt install postgresql-contrib postgresql-17 postgresql-client-17 -y
 systemctl enable postgresql
 systemctl restart postgresql
 
 # Apparently in Ubuntu this is not needed
-#sudo -u postgres /usr/lib/postgresql/16/bin/initdb -D /var/lib/postgresql/16/main --locale-provider=icu --icu-locale=en-US
+#sudo -u postgres /usr/lib/postgresql/17/bin/initdb -D /var/lib/postgresql/17/main --locale-provider=icu --icu-locale=en-US
 
 # Modify DB Settings
-cp ~/icinga2prodinstallation/postgresql/ubuntu_pg_hba.conf /etc/postgresql/16/main/pg_hba.conf
+cp ~/icinga2prodinstallation/postgresql/ubuntu_pg_hba.conf /etc/postgresql/17/main/pg_hba.conf
 systemctl restart postgresql
 
 # Install icingadb

@@ -22,10 +22,10 @@ systemctl restart influxdb
 #wget https://dl.grafana.com/oss/release/grafana_12.0.1_amd64.deb
 #dpkg -i grafana_12.0.1_amd64.deb
 
-# Install a specific Grafana version (12.1.0)
+# Install a specific Grafana version (12.2.0)
 sudo apt-get install -y adduser libfontconfig1 musl
-wget https://dl.grafana.com/oss/release/grafana_12.1.0_amd64.deb
-sudo dpkg -i grafana_12.1.0_amd64.deb
+wget https://dl.grafana.com/oss/release/grafana_12.2.0_amd64.deb
+sudo dpkg -i grafana_12.2.0_amd64.deb
 
 systemctl daemon-reload
 systemctl start grafana-server
