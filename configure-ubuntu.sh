@@ -35,7 +35,7 @@ icinga2 api setup
 systemctl restart icinga2
 
 # Install PostgreSQL Repository
-apt install curl ca-certificates
+apt install curl ca-certificates -y
 install -d /usr/share/postgresql-common/pgdg
 curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
 . /etc/os-release

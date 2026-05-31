@@ -10,61 +10,61 @@ cd ~
 #sudo dpkg -i influxdb-1.11.8-amd64.deb
 
 # Addf InfluxDB Repo
-wget -q https://repos.influxdata.com/influxdata-archive_compat.key
-echo '393e8779c89ac8d958f81f942f9ad7fb82a25e133faddaf92e15b16e6ac9ce4c influxdata-archive_compat.key' | sha256sum -c && cat influxdata-archive_compat.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg > /dev/null
-echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+#wget -q https://repos.influxdata.com/influxdata-archive_compat.key
+#echo '393e8779c89ac8d958f81f942f9ad7fb82a25e133faddaf92e15b16e6ac9ce4c influxdata-archive_compat.key' | sha256sum -c && cat influxdata-archive_compat.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg > /dev/null
+#echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
 
 # Install InfluxDB
-apt-get update && sudo apt-get install influxdb
-systemctl restart influxdb
+#apt-get update && sudo apt-get install influxdb
+#systemctl restart influxdb
 
 #apt install -y adduser libfontconfig1 musl
 #wget https://dl.grafana.com/oss/release/grafana_12.0.1_amd64.deb
 #dpkg -i grafana_12.0.1_amd64.deb
 
-# Install a specific Grafana version (12.2.0)
+# Install a specific Grafana version (13.0.1)
 sudo apt-get install -y adduser libfontconfig1 musl
-wget https://dl.grafana.com/oss/release/grafana_12.2.0_amd64.deb
-sudo dpkg -i grafana_12.2.0_amd64.deb
+wget https://dl.grafana.com/grafana/release/13.0.1+security-01/grafana_13.0.1+security-01_25720641773_linux_amd64.deb
+sudo dpkg -i grafana_13.0.1+security-01_25720641773_linux_amd64.deb
 
 systemctl daemon-reload
 systemctl start grafana-server
 systemctl enable grafana-server.service
 
 # Enable InfluxDB feature
-icinga2 feature enable influxdb
+#icinga2 feature enable influxdb
+#systemctl restart icinga2
+
+#sed -i 's|//host = "127.0.0.1"|host = "127.0.0.1"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//port = 8086|port = 8086|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//database = "icinga2"|database = "icinga"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//flush_threshold = 1024|flush_threshold = 1024|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//flush_interval = 10s|flush_interval = 10s|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//host_template = {|host_template = {|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  measurement = "$host.check_command$"|  measurement = "$host.check_command$"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  tags = {|  tags = {|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//    hostname = "$host.name$"|    hostname = "$host.name$"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  }|  }|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//}|}|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//service_template = {|service_template = {|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  measurement = "$service.check_command$"|  measurement = "$service.check_command$"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  tags = {|  tags = {|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//    hostname = "$host.name$"|    hostname = "$host.name$"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//    service = "$service.name$"|    service = "$service.name$"|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//  }|  }|g' /etc/icinga2/features-available/influxdb.conf
+#sed -i 's|//}|}|g' /etc/icinga2/features-available/influxdb.conf
+
 systemctl restart icinga2
 
-sed -i 's|//host = "127.0.0.1"|host = "127.0.0.1"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//port = 8086|port = 8086|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//database = "icinga2"|database = "icinga"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//flush_threshold = 1024|flush_threshold = 1024|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//flush_interval = 10s|flush_interval = 10s|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//host_template = {|host_template = {|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  measurement = "$host.check_command$"|  measurement = "$host.check_command$"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  tags = {|  tags = {|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//    hostname = "$host.name$"|    hostname = "$host.name$"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  }|  }|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//}|}|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//service_template = {|service_template = {|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  measurement = "$service.check_command$"|  measurement = "$service.check_command$"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  tags = {|  tags = {|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//    hostname = "$host.name$"|    hostname = "$host.name$"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//    service = "$service.name$"|    service = "$service.name$"|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//  }|  }|g' /etc/icinga2/features-available/influxdb.conf
-sed -i 's|//}|}|g' /etc/icinga2/features-available/influxdb.conf
+#influx -execute 'CREATE DATABASE icinga'
+#influx -execute 'SHOW DATABASES'
+#influx -database 'icinga' -execute 'CREATE USER icinga WITH PASSWORD '\'icinga\'' WITH ALL PRIVILEGES'
+#influx -execute 'show retention policies on "icinga"'
+#influx -execute 'create retention policy "icinga_2_weeks" on "icinga" duration 2w replication 1 default'
+#influx -execute 'alter retention policy "icinga_2_weeks" on "icinga" default'
+#influx -execute 'drop retention policy "autogen" on "icinga"'
 
-systemctl restart icinga2
-
-influx -execute 'CREATE DATABASE icinga'
-influx -execute 'SHOW DATABASES'
-influx -database 'icinga' -execute 'CREATE USER icinga WITH PASSWORD '\'icinga\'' WITH ALL PRIVILEGES'
-influx -execute 'show retention policies on "icinga"'
-influx -execute 'create retention policy "icinga_2_weeks" on "icinga" duration 2w replication 1 default'
-influx -execute 'alter retention policy "icinga_2_weeks" on "icinga" default'
-influx -execute 'drop retention policy "autogen" on "icinga"'
-
-systemctl restart influxdb
+#systemctl restart influxdb
 
 # Perfdatagraphs Module
 git clone https://github.com/NETWAYS/icingaweb2-module-perfdatagraphs.git
