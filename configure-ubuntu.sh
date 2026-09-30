@@ -11,7 +11,8 @@ trap 'echo "Error on line $LINENO: $BASH_COMMAND" >&2' ERR
 
 # Initialize
 cd ~
-apt update
+apt update -y
+apt upgrade -y
 
 # Log in Insecure
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
