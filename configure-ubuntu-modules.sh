@@ -13,7 +13,7 @@ trap 'echo "Error on line $LINENO: $BASH_COMMAND" >&2' ERR
 cd ~
 cd icinga2prodinstallation
 
-chmod +x businessprocess.sh map.sh fileshipper.sh pdfexport.sh reporting.sh cube.sh theme.sh audit.sh x509.sh enforceddashboard.sh grafana.sh
+chmod +x businessprocess.sh map.sh fileshipper.sh pdfexport.sh reporting.sh cube.sh theme.sh audit.sh x509.sh enforceddashboard.sh perfdataplugins.sh
 
 apt install -y git wget htop
 
@@ -27,7 +27,7 @@ apt install -y git wget htop
 ./audit.sh
 ./x509.sh
 ./enforceddashboard.sh
-./grafana.sh
+./perfdataplugins.sh
 
 cd ~
 cd icinga2prodinstallation

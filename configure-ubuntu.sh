@@ -42,8 +42,8 @@ curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://
 sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $VERSION_CODENAME-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 apt update
 
-# Install PostgreSQL version 16
-apt install postgresql-contrib postgresql-17 postgresql-client-17 -y
+# Install PostgreSQL version 18
+apt install postgresql-contrib postgresql-18 postgresql-client-18 -y
 systemctl enable postgresql
 systemctl restart postgresql
 
@@ -51,7 +51,7 @@ systemctl restart postgresql
 #sudo -u postgres /usr/lib/postgresql/17/bin/initdb -D /var/lib/postgresql/17/main --locale-provider=icu --icu-locale=en-US
 
 # Modify DB Settings
-cp ~/icinga2prodinstallation/postgresql/ubuntu_pg_hba.conf /etc/postgresql/17/main/pg_hba.conf
+cp ~/icinga2prodinstallation/postgresql/ubuntu_pg_hba.conf /etc/postgresql/18/main/pg_hba.conf
 systemctl restart postgresql
 
 # Install icingadb

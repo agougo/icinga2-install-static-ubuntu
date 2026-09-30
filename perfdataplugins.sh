@@ -23,13 +23,13 @@ cd ~
 #dpkg -i grafana_12.0.1_amd64.deb
 
 # Install a specific Grafana version (13.0.1)
-sudo apt-get install -y adduser libfontconfig1 musl
-wget https://dl.grafana.com/grafana/release/13.0.1+security-01/grafana_13.0.1+security-01_25720641773_linux_amd64.deb
-sudo dpkg -i grafana_13.0.1+security-01_25720641773_linux_amd64.deb
+#sudo apt-get install -y adduser libfontconfig1 musl
+#wget https://dl.grafana.com/grafana/release/13.0.1+security-01/grafana_13.0.1+security-01_25720641773_linux_amd64.deb
+#sudo dpkg -i grafana_13.0.1+security-01_25720641773_linux_amd64.deb
 
-systemctl daemon-reload
-systemctl start grafana-server
-systemctl enable grafana-server.service
+#systemctl daemon-reload
+#systemctl start grafana-server
+#systemctl enable grafana-server.service
 
 # Enable InfluxDB feature
 #icinga2 feature enable influxdb
@@ -54,7 +54,7 @@ systemctl enable grafana-server.service
 #sed -i 's|//  }|  }|g' /etc/icinga2/features-available/influxdb.conf
 #sed -i 's|//}|}|g' /etc/icinga2/features-available/influxdb.conf
 
-systemctl restart icinga2
+#systemctl restart icinga2
 
 #influx -execute 'CREATE DATABASE icinga'
 #influx -execute 'SHOW DATABASES'
@@ -99,27 +99,27 @@ icingacli module enable perfdatagraphsinfluxdbv1
 
 #icingacli module enable grafana
 
-cd icinga2prodinstallation
+#cd icinga2prodinstallation
 
-rm -f /etc/grafana/grafana.ini
-cp grafana/grafana.ini /etc/grafana/grafana.ini
-cp /etc/ssl/certs/httpd.crt /etc/grafana/httpd.crt
-cp /etc/ssl/private/httpd.key /etc/grafana/httpd.key
+#rm -f /etc/grafana/grafana.ini
+#cp grafana/grafana.ini /etc/grafana/grafana.ini
+#cp /etc/ssl/certs/httpd.crt /etc/grafana/httpd.crt
+#cp /etc/ssl/private/httpd.key /etc/grafana/httpd.key
 
-cd /etc/grafana
-chown grafana:grafana grafana.ini httpd.crt httpd.key
-systemctl restart grafana-server.service
+#cd /etc/grafana
+#chown grafana:grafana grafana.ini httpd.crt httpd.key
+#systemctl restart grafana-server.service
 
 # Install a custom image renderer version
 #grafana-cli --pluginUrl /var/lib/grafana/plugins/grafana-image-renderer-3.11.0.linux-amd64.zip plugins install grafana-image-renderer
 
-grafana-cli plugins install grafana-image-renderer
-apt install libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 libxcomposite1 libxdamage1 libx11-dev libxfixes3 libxrandr2 libgbm1 liboss4-salsa-asound2 -y
-systemctl restart grafana-server.service
+#grafana-cli plugins install grafana-image-renderer
+#apt install libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 libxcomposite1 libxdamage1 libx11-dev libxfixes3 libxrandr2 libgbm1 liboss4-salsa-asound2 -y
+#systemctl restart grafana-server.service
 
-sleep 5
+#sleep 5
 
-curl -k --user admin:admin 'https://localhost:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"InfluxDB","type":"influxdb","url":"http://localhost:8086","access":"proxy","isDefault":true,"database":"icinga","user":"icinga","password":"icinga"}'
+#curl -k --user admin:admin 'https://localhost:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"InfluxDB","type":"influxdb","url":"http://localhost:8086","access":"proxy","isDefault":true,"database":"icinga","user":"icinga","password":"icinga"}'
 
 cd ~
 cd icinga2prodinstallation
