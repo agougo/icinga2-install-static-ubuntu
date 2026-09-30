@@ -72,7 +72,7 @@ systemctl enable icinga-director.service
 icingacli director migration run --verbose
 
 # Finish Message
-read -r -s -p $'\nMake sure the director is properly configured in Icingaweb2...\n\n \n\nNow press Enter'
+read -r -s -p $'\nMake sure the director is properly configured in Icingaweb2... \n\nNow press Enter ...'
 
 else
     echo "This script only runs on Ubuntu 24.04. Exiting."
