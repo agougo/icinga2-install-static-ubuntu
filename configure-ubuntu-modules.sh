@@ -27,7 +27,7 @@ apt install -y git wget htop
 ./audit.sh
 ./x509.sh
 ./enforceddashboard.sh
-./perfdataplugins.sh
+#./perfdataplugins.sh
 
 cd ~
 cd icinga2prodinstallation
