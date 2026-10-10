@@ -2,21 +2,11 @@
   "apiVersion": "dashboard.grafana.app/v2",
   "kind": "Dashboard",
   "metadata": {
-    "name": "adzg4x2",
+    "name": "services_per_host",
     "namespace": "default",
-    "uid": "608507ae-29ab-4238-b9ac-dca422ec3c54",
-    "resourceVersion": "1791665639303988",
-    "generation": 13,
-    "creationTimestamp": "2026-10-10T20:44:32Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "1337665871822848"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:dg0u8ad0zwagwb",
-      "grafana.app/saved-from-ui": "Grafana v13.2.3 (90ffed056f)",
-      "grafana.app/updatedBy": "user:dg0u8ad0zwagwb",
-      "grafana.app/updatedTimestamp": "2026-10-10T20:53:59Z"
-    }
+    "uid": "1e2c4560-b61b-4fe1-af37-0280d23d3d91",
+    "resourceVersion": "1791669393799013",
+    "generation": 2
   },
   "spec": {
     "annotations": [
@@ -59,11 +49,8 @@
                   "spec": {
                     "query": {
                       "kind": "DataQuery",
-                      "group": "prometheus",
+                      "group": "",
                       "version": "v0",
-                      "datasource": {
-                        "name": "eg0u8daaihla8a"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "expr": "state_check_perfdata{icinga2_host_name=\"$host\", icinga2_service_name=~\"$service\"}",
@@ -91,9 +78,7 @@
                   "calcs": [],
                   "displayMode": "list",
                   "placement": "bottom",
-                  "showLegend": true,
-                  "sortBy": "Name",
-                  "sortDesc": true
+                  "showLegend": true
                 },
                 "tooltip": {
                   "hideZeros": false,
@@ -109,6 +94,10 @@
                       {
                         "value": 0,
                         "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
                       }
                     ]
                   },
@@ -175,8 +164,7 @@
               "repeat": {
                 "mode": "variable",
                 "value": "service",
-                "direction": "v",
-                "maxPerRow": 2
+                "direction": "v"
               }
             }
           }
@@ -191,7 +179,7 @@
       "timezone": "browser",
       "from": "now-3h",
       "to": "now",
-      "autoRefresh": "5m",
+      "autoRefresh": "",
       "autoRefreshIntervals": [
         "5s",
         "10s",
@@ -207,15 +195,15 @@
       "hideTimepicker": false,
       "fiscalYearStartMonth": 0
     },
-    "title": "All Services Per Host",
+    "title": "Services Per Host",
     "variables": [
       {
         "kind": "QueryVariable",
         "spec": {
           "name": "host",
           "current": {
-            "text": "my-s-delete-12-ubuntu2404",
-            "value": "my-s-delete-12-ubuntu2404"
+            "text": "host",
+            "value": "host"
           },
           "label": "Host",
           "hide": "dontHide",
@@ -226,7 +214,7 @@
             "group": "prometheus",
             "version": "v0",
             "datasource": {
-              "name": "eg0u8daaihla8a"
+              "name": "prometheus"
             },
             "spec": {
               "qryType": 1,
@@ -236,7 +224,7 @@
           },
           "regex": "",
           "regexApplyTo": "value",
-          "sort": "disabled",
+          "sort": "alphabeticalAsc",
           "definition": "label_values(state_check_perfdata,icinga2_host_name)",
           "options": [],
           "multi": false,
@@ -265,18 +253,18 @@
             "group": "prometheus",
             "version": "v0",
             "datasource": {
-              "name": "eg0u8daaihla8a"
+              "name": "prometheus"
             },
             "spec": {
               "qryType": 1,
-              "query": "label_values(state_check_perfdata{icinga2_host_name=\"my-s-delete-12-ubuntu2404\"},icinga2_service_name)",
+              "query": "label_values(state_check_perfdata{icinga2_host_name=\"$host\"},icinga2_service_name)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
             }
           },
           "regex": "",
           "regexApplyTo": "value",
           "sort": "disabled",
-          "definition": "label_values(state_check_perfdata{icinga2_host_name=\"my-s-delete-12-ubuntu2404\"},icinga2_service_name)",
+          "definition": "label_values(state_check_perfdata{icinga2_host_name=\"$host\"},icinga2_service_name)",
           "options": [],
           "multi": true,
           "includeAll": true,
