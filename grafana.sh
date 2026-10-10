@@ -36,6 +36,8 @@ GRAFANA_USER="admin"
 GRAFANA_PASS="admin"
 PROM_URL="https://localhost:9090"
 
+sleep 5
+
 curl -k --user "$GRAFANA_USER:$GRAFANA_PASS" "$GRAFANA_URL/api/datasources" \
   -X POST -H 'Content-Type: application/json;charset=UTF-8' \
   --data-binary '{
