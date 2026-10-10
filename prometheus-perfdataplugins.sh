@@ -9,6 +9,15 @@ cd ~
 icinga2 feature enable otlpmetrics
 systemctl restart icinga2
 
+# Configure otlpmetrics
+sed -i 's|// host = "127.0.0.1"|host = "localhost"|g' /etc/icinga2/features-available/influxdb.conf
+sed -i 's|// port = 4318|port = 9090|g' /etc/icinga2/features-available/influxdb.conf
+sed -i 's|// metrics_endpoint = "/v1/metrics"|metrics_endpoint = "/api/v1/otlp/v1/metrics"|g' /etc/icinga2/features-available/influxdb.conf
+sed -i 's|// enable_tls = false|enable_tls = true|g' /etc/icinga2/features-available/influxdb.conf
+sed -i 's|// tls_ca_file = "/path/to/otel/ca.crt"|tls_ca_file = "/etc/prometheus/prometheus.crt"|g' /etc/icinga2/features-available/influxdb.conf
+
+systemctl restart icinga2
+
 # Perfdatagraphs Module
 git clone https://github.com/NETWAYS/icingaweb2-module-perfdatagraphs.git
 mv icingaweb2-module-perfdatagraphs/ perfdatagraphs
