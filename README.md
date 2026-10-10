@@ -7,7 +7,7 @@ The purpose of this repo is to automate the creation of a full blown Icinga2 Mas
 / The scripts have only been tested on an Ubuntu v24.04 standard installation  
 / The Database backend is PostgreSQL  
 / The locale of your server needs to be set to en-US - if not change it, or modify the psql commands accordingly  
-/ You need to bring your own TLS certificates. In this installation a self signed is generated
+/ You need to bring your own TLS certificates. In this installation a self signed is generated for Icinga2 and Prometheus
 
 ### How to Install  
 
@@ -61,6 +61,10 @@ You should have the following modules installed:
 
 If everything was executed you can change into my theme ... or not ... and you should have a running installation.
 
+### Prometheus  
+
+Prometheus is installed as a backend for the perfdatagraphs. InfluxDB was ditched alltogether.
+
 ### Grafana  
 
 Grafana is also installed on the same server. You can access it on https://IP_ADDRESS:3000  
@@ -69,9 +73,7 @@ In the Grafana folder you will find a dashboard to import. If you wish you can a
 
 ### [TO DO]
 
-/ Move from InfluxDB v1 to InfluxDB v2  
-/ Structure Grafana a bit better  
-/ Test the Grafana module by Netways
+/ I cannot think of anything right now
 
 ### Support
 
