@@ -49,6 +49,3 @@ icingacli module enable perfdatagraphsprometheus
 
 cd ~
 cd icinga2prodinstallation
-
-# Finish Message
-read -r -s -p $'\nIMPORTANT: NEXT STEPS: \n1) Configure the Graphs Module if required. \n\nPress now enter to exit...\n\n'
