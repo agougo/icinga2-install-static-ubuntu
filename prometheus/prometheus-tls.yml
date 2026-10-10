@@ -16,6 +16,19 @@ rule_files:
 # - "first_rules.yml"
 # - "second_rules.yml"
 
+storage:
+  tsdb:
+    out_of_order_time_window: 30m
+
+otlp:
+  promote_resource_attributes:
+    - service.namespace
+    - service.instance.id
+    - service.name
+    - icinga2.service.name
+    - icinga2.command.name
+    - icinga2.host.name
+
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:

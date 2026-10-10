@@ -27,7 +27,8 @@ apt install -y git wget htop
 ./audit.sh
 ./x509.sh
 ./enforceddashboard.sh
-#./perfdataplugins.sh
+#./prometheus-tls.sh
+#./prometheus-perfdataplugins.sh
 
 cd ~
 cd icinga2prodinstallation
